@@ -10,25 +10,24 @@
 
 void IO_Init(Port_Type port)
 {
-	if (port==PORT_A)
+	switch (port)
 	{
-		DDRA=0xff;
-		PORTA=0x00;
-	}
-	else if (port==PORT_B)
-	{
-		DDRB=0xff;
-		PORTB=0x00;
-	}
-	else if (port==PORT_C)
-	{
-		DDRC=0xff;
-		PORTC=0x00;
-	}
-	else
-	{
-		DDRD=0xff;
-		PORTD=0x00;
+		case PORT_A:
+			DDRA = 0xff;
+			PORTA = 0x00;
+			break;
+		case PORT_B:
+			DDRB = 0xff;
+			PORTB = 0x00;
+			break;
+		case PORT_C:
+			DDRC = 0xff;
+			PORTC = 0x00;
+			break;
+		case PORT_D:
+			DDRC = 0xff;
+			PORTC = 0x00;
+			break;
 	}
 }
 
@@ -46,7 +45,6 @@ void IO_PinMode(Pin_Type pin , PinCmd_Type pincmd , PinRes_Type pinres)
 {
 	
 	//PA0的设置
-	
 	if(pin==PORTA_Pin_0)
 	{
 		if ((pincmd==Input) && (pinres==High))		//PA0输入,引脚默认高电平
