@@ -50,3 +50,4 @@ uint16_t ADC_GetVoltage(float referencevoltage);
 
 
 #endif /* ATMEGA16_ADC_H_ */
+
