@@ -1,50 +1,50 @@
 #include "atmega16_ds18b20.h"
-#define DQ_OUT DDRB|=(1<<PORTB0)				//ÉèÖÃ³ÉÊä³ö
-#define DQ_IN DDRB&=~(1<<PORTB0)				//ÉèÖÃ³ÉÊäÈë
-#define DQ_HIGH PORTB|=(1<<PORTB0)				//ÉèÖÃ³É¸ßµçÆ½
-#define DQ_LOW PORTB&=~(1<<PORTB0)				//ÉèÖÃ³ÉµÍµçÆ½
+#define DQ_OUT DDRB|=(1<<PORTB0)				//è®¾ç½®æˆè¾“å‡º
+#define DQ_IN DDRB&=~(1<<PORTB0)				//è®¾ç½®æˆè¾“å…¥
+#define DQ_HIGH PORTB|=(1<<PORTB0)				//è®¾ç½®æˆé«˜ç”µå¹³
+#define DQ_LOW PORTB&=~(1<<PORTB0)				//è®¾ç½®æˆä½ç”µå¹³
 #define DQ_READ PINB&(1<<PINB0)
 
 Pin_Type pin;
 
-void DS18B20_Init(Pin_Type pinx)				//³õÊ¼»¯º¯Êı
+void DS18B20_Init(Pin_Type pinx)				//åˆå§‹åŒ–å‡½æ•°
 {
-	pin=pinx;									//¸ÃÒı½ÅÊä³ö¸ßµçÆ½
+	pin=pinx;									//è¯¥å¼•è„šè¾“å‡ºé«˜ç”µå¹³
 }
 
-void DS18B20_Reset()							//DS18B20¸´Î»º¯Êı
+void DS18B20_Reset()							//DS18B20å¤ä½å‡½æ•°
 {					
 	DQ_OUT;
 	DQ_HIGH;
 	_delay_us(10);
 	DQ_LOW;					
-	_delay_us(500);				//Êä³öÒ»¸öµÍµçÆ½³ÖĞø480~960us£»
+	_delay_us(500);				//è¾“å‡ºä¸€ä¸ªä½ç”µå¹³æŒç»­480~960usï¼›
 	DQ_HIGH;	
-	DQ_IN;				//Òı½ÅÊäÈëÉÏÀ­ÑÓÊ±15~60us£»
+	DQ_IN;				//å¼•è„šè¾“å…¥ä¸Šæ‹‰å»¶æ—¶15~60usï¼›
 	_delay_us(50);
-	while (DQ_READ);					//µÈ´ıÒı½Å±»DS18B20°ÑÒı½ÅÀ­µÍ
-	_delay_us(200);								//ÑÓÊ±240us
+	while (DQ_READ);					//ç­‰å¾…å¼•è„šè¢«DS18B20æŠŠå¼•è„šæ‹‰ä½
+	_delay_us(200);								//å»¶æ—¶240us
 }
 
-void DS18B20_WriteByte(uint8_t data)			//DS18B20ÏÈËÍµÍÎ»Êı¾İ
+void DS18B20_WriteByte(uint8_t data)			//DS18B20å…ˆé€ä½ä½æ•°æ®
 {
-	uint8_t i;									//iÓÃÀ´Ñ­»·					
-	for (i=0;i<8;i++)							//8´ÎÑ­»·ËÍ8Î»Êı¾İ
+	uint8_t i;									//iç”¨æ¥å¾ªç¯					
+	for (i=0;i<8;i++)							//8æ¬¡å¾ªç¯é€8ä½æ•°æ®
 	{
 		DQ_OUT;
-		DQ_LOW;				//¿ØÖÆÏßÀ­µÍ³ÖĞø8us±íÊ¾Òª·¢ËÍÊı¾İ
+		DQ_LOW;				//æ§åˆ¶çº¿æ‹‰ä½æŒç»­8usè¡¨ç¤ºè¦å‘é€æ•°æ®
 		_delay_us(8);
-		if(data & 0x01)							//Èç¹ûÊı¾İÎ»×îµÍÎ»ÎªÒ»£¬¿ØÖÆÏßÖÃ¸ß·¢ËÍ1³ÖĞø55us
+		if(data & 0x01)							//å¦‚æœæ•°æ®ä½æœ€ä½ä½ä¸ºä¸€ï¼Œæ§åˆ¶çº¿ç½®é«˜å‘é€1æŒç»­55us
 		{
 			DQ_HIGH;
 		}
-		else									//·ñÔòÖÃµÍ·¢ËÍ0³ÖĞø55us
+		else									//å¦åˆ™ç½®ä½å‘é€0æŒç»­55us
 		{
 			DQ_LOW;
 		}
 		data>>=1;
-		_delay_us(50);						//ÑÓÊ±50us ds18b20È¡Ñù
-		DQ_HIGH;			//¿ØÖÆÏßÀ­¸ß¸´Î»³ÖĞø10us
+		_delay_us(50);						//å»¶æ—¶50us ds18b20å–æ ·
+		DQ_HIGH;			//æ§åˆ¶çº¿æ‹‰é«˜å¤ä½æŒç»­10us
 		_delay_us(2);
 	 	
 	}
@@ -57,10 +57,10 @@ uint8_t DS18B20_ReadByte()
 	{
 		data>>=1;
 		DQ_OUT;
-		DQ_LOW;			//¸øÒ»¸ö8usµÍµçÆ½±íÊ¾Òª¶ÁÊı¾İ
+		DQ_LOW;			//ç»™ä¸€ä¸ª8usä½ç”µå¹³è¡¨ç¤ºè¦è¯»æ•°æ®
 		_delay_us(5);
 		DQ_IN;
-		DQ_HIGH;			//ÉèÖÃÎªÊäÈë
+		DQ_HIGH;			//è®¾ç½®ä¸ºè¾“å…¥
 		_delay_us(5);
 		if (DQ_READ)
 		{
@@ -95,4 +95,5 @@ uint16_t DS18B20_ReadTempData()
 	temp_data|=data_l;
 	return temp_data;
 }
+
 
