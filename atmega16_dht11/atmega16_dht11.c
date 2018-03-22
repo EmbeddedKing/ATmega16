@@ -2,23 +2,23 @@
 
 void DHT11_Start()
 {
-	DHT11_OUT;					//DHT11Êý¾ÝÏßÉèÖÃÊä³ö
-	DHT11_LOW;					//DHT11Êý¾ÝÏßÉèÖÃµÍµçÆ½³ÖÐø20ms
+	DHT11_OUT;					//DHT11æ•°æ®çº¿è®¾ç½®è¾“å‡º
+	DHT11_LOW;					//DHT11æ•°æ®çº¿è®¾ç½®ä½Žç”µå¹³æŒç»­20ms
 	_delay_ms(20);
-	DHT11_HIGH;					//DHT11Êý¾ÝÏßÉèÖÃ¸ßµçÆ½
-	DHT11_IN;					//DHT11Êý¾ÝÏßÉèÖÃÊäÈë
-	while (DHT11_READ);			//µÈ´ýDHT11½«Êý¾ÝÏßÀ­µÍ
-	while ((DHT11_READ)==1);	//µÈ´ýDHT11½«Êý¾ÝÏßÀ­¸ß£¬×¼±¸Êä³ö
+	DHT11_HIGH;					//DHT11æ•°æ®çº¿è®¾ç½®é«˜ç”µå¹³
+	DHT11_IN;					//DHT11æ•°æ®çº¿è®¾ç½®è¾“å…¥
+	while (DHT11_READ);			//ç­‰å¾…DHT11å°†æ•°æ®çº¿æ‹‰ä½Ž
+	while ((DHT11_READ)==1);	//ç­‰å¾…DHT11å°†æ•°æ®çº¿æ‹‰é«˜ï¼Œå‡†å¤‡è¾“å‡º
 }
 
 uint8_t DHT11_ReadByte()
 {
-	uint8_t data=0,i;				//dataÓÃÀ´´æ·ÅÊý¾Ý£¬iÓÃÀ´Ñ­»·
+	uint8_t data=0,i;				//dataç”¨æ¥å­˜æ”¾æ•°æ®ï¼Œiç”¨æ¥å¾ªçŽ¯
 	for (i=0;i<8;i++)				
 	{
-		while (DHT11_READ);			//µÈ´ýDHT11Êý¾ÝÏß½«Êý¾ÝÏßÀ­µÍ¿ªÊ¼·¢ËÍÒ»Î»Êý¾Ý
-		while ((DHT11_READ)==1);	//µÈ´ýDHT11½«Êý¾ÝÏßÀ­¸ß
-		_delay_us(30);				//µÈ´ý35usÅÐ¶ÏDHT11·¢ËÍµÄÊÇ'0'»¹ÊÇ'1'£¬Èç¹ûÎª'0'¸ßµçÆ½³ÖÐø26~28us£¬'1'³ÖÐø70us
+		while (DHT11_READ);			//ç­‰å¾…DHT11æ•°æ®çº¿å°†æ•°æ®çº¿æ‹‰ä½Žå¼€å§‹å‘é€ä¸€ä½æ•°æ®
+		while ((DHT11_READ)==1);	//ç­‰å¾…DHT11å°†æ•°æ®çº¿æ‹‰é«˜
+		_delay_us(30);				//ç­‰å¾…35usåˆ¤æ–­DHT11å‘é€çš„æ˜¯'0'è¿˜æ˜¯'1'ï¼Œå¦‚æžœä¸º'0'é«˜ç”µå¹³æŒç»­26~28usï¼Œ'1'æŒç»­70us
 		if ((DHT11_READ)==1)
 		{
 			data|=0x01;
@@ -27,3 +27,4 @@ uint8_t DHT11_ReadByte()
 	}
 	return data;
 }
+
