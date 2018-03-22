@@ -3,8 +3,8 @@
 /************************************************************************/
 /*void	IO_Init();														*/
 /*																		*/
-/*´Ëº¯ÊýÓÃÀ´³õÊ¼»¯IO£¬ÓÐÒ»¸ö²ÎÊý										    */
-/*Ò».port£ºÓÃÀ´Ñ¡ÔñIO¶Ë¿Ú													*/
+/*æ­¤å‡½æ•°ç”¨æ¥åˆå§‹åŒ–IOï¼Œæœ‰ä¸€ä¸ªå‚æ•°										    */
+/*ä¸€.portï¼šç”¨æ¥é€‰æ‹©IOç«¯å£													*/
 /*																		*/
 /************************************************************************/
 
@@ -34,940 +34,940 @@ void IO_Init(Port_Type port)
 /************************************************************************/
 /*void	IO_PinMode();													*/
 /*																		*/
-/*´Ëº¯ÊýÓÃÀ´ÉèÖÃÒý½ÅÄ£Ê½£¬ÓÐÈý¸ö²ÎÊý									    */
-/*Ò».pin£ºÓÃÀ´Ñ¡ÔñÒý½Å													*/
-/*Ò».pincmd£ºÓÃÀ´ÉèÖÃÊäÈëÊä³ö												*/
-/*Ò».pinres£ºÓÃÀ´ÉèÖÃ¸ßµÍµçÆ½												*/
+/*æ­¤å‡½æ•°ç”¨æ¥è®¾ç½®å¼•è„šæ¨¡å¼ï¼Œæœ‰ä¸‰ä¸ªå‚æ•°									    */
+/*ä¸€.pinï¼šç”¨æ¥é€‰æ‹©å¼•è„š													*/
+/*ä¸€.pincmdï¼šç”¨æ¥è®¾ç½®è¾“å…¥è¾“å‡º												*/
+/*ä¸€.pinresï¼šç”¨æ¥è®¾ç½®é«˜ä½Žç”µå¹³												*/
 /*																		*/
 /************************************************************************/
 
 void IO_PinMode(Pin_Type pin , PinCmd_Type pincmd , PinRes_Type pinres)
 {
 	
-	//PA0µÄÉèÖÃ
+	//PA0çš„è®¾ç½®
 	if(pin==PORTA_Pin_0)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PA0ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PA0è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRA&=~(1<<PORTA0);				//PA0ÊäÈë
-			PORTA|=(1<<PORTA0);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRA&=~(1<<PORTA0);				//PA0è¾“å…¥
+			PORTA|=(1<<PORTA0);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PA0ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PA0è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRA&=~(1<<PORTA0);				//PA0ÊäÈë
-			PORTA&=~(1<<PORTA0);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRA&=~(1<<PORTA0);				//PA0è¾“å…¥
+			PORTA&=~(1<<PORTA0);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PA0Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PA0è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRA|=(1<<PORTA0);				//PA0Êä³ö
-			PORTA|=(1<<PORTA0);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRA|=(1<<PORTA0);				//PA0è¾“å‡º
+			PORTA|=(1<<PORTA0);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if ((pincmd==Output) && (pinres==Low))
 		{
-			DDRA|=(1<<PORTA0);				//PA0Êä³ö
-			PORTA&=~(1<<PORTA0);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRA|=(1<<PORTA0);				//PA0è¾“å‡º
+			PORTA&=~(1<<PORTA0);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PA1µÄÉèÖÃ
+	//PA1çš„è®¾ç½®
 	
 	else if(pin==PORTA_Pin_1)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PA1ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PA1è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRA&=~(1<<PORTA1);				//PA1ÊäÈë
-			PORTA|=(1<<PORTA1);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRA&=~(1<<PORTA1);				//PA1è¾“å…¥
+			PORTA|=(1<<PORTA1);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PA1ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PA1è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRA&=~(1<<PORTA1);				//PA1ÊäÈë
-			PORTA&=~(1<<PORTA1);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRA&=~(1<<PORTA1);				//PA1è¾“å…¥
+			PORTA&=~(1<<PORTA1);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PA1Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PA1è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRA|=(1<<PORTA1);				//PA1Êä³ö
-			PORTA|=(1<<PORTA1);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRA|=(1<<PORTA1);				//PA1è¾“å‡º
+			PORTA|=(1<<PORTA1);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if ((pincmd==Output) && (pinres==Low))
 		{
-			DDRA|=(1<<PORTA1);				//PA1Êä³ö
-			PORTA&=~(1<<PORTA1);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRA|=(1<<PORTA1);				//PA1è¾“å‡º
+			PORTA&=~(1<<PORTA1);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PA2µÄÉèÖÃ
+	//PA2çš„è®¾ç½®
 	
 	else if(pin==PORTA_Pin_2)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PA2ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PA2è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRA&=~(1<<PORTA2);				//PA2ÊäÈë
-			PORTA|=(1<<PORTA2);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRA&=~(1<<PORTA2);				//PA2è¾“å…¥
+			PORTA|=(1<<PORTA2);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PA2ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PA2è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRA&=~(1<<PORTA2);				//PA2ÊäÈë
-			PORTA&=~(1<<PORTA2);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRA&=~(1<<PORTA2);				//PA2è¾“å…¥
+			PORTA&=~(1<<PORTA2);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PA2Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PA2è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRA|=(1<<PORTA2);				//PA2Êä³ö
-			PORTA|=(1<<PORTA2);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRA|=(1<<PORTA2);				//PA2è¾“å‡º
+			PORTA|=(1<<PORTA2);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if ((pincmd==Output) && (pinres==Low))
 		{
-			DDRA|=(1<<PORTA2);				//PA2Êä³ö
-			PORTA&=~(1<<PORTA2);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRA|=(1<<PORTA2);				//PA2è¾“å‡º
+			PORTA&=~(1<<PORTA2);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PA3µÄÉèÖÃ
+	//PA3çš„è®¾ç½®
 	
 	else if(pin==PORTA_Pin_3)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PA3ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PA3è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRA&=~(1<<PORTA3);				//PA3ÊäÈë
-			PORTA|=(1<<PORTA3);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRA&=~(1<<PORTA3);				//PA3è¾“å…¥
+			PORTA|=(1<<PORTA3);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PA3ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PA3è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRA&=~(1<<PORTA3);				//PA3ÊäÈë
-			PORTA&=~(1<<PORTA3);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRA&=~(1<<PORTA3);				//PA3è¾“å…¥
+			PORTA&=~(1<<PORTA3);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PA3Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PA3è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRA|=(1<<PORTA3);				//PA3Êä³ö
-			PORTA|=(1<<PORTA3);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRA|=(1<<PORTA3);				//PA3è¾“å‡º
+			PORTA|=(1<<PORTA3);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if ((pincmd==Output) && (pinres==Low))
 		{
-			DDRA|=(1<<PORTA3);				//PA3Êä³ö
-			PORTA&=~(1<<PORTA3);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRA|=(1<<PORTA3);				//PA3è¾“å‡º
+			PORTA&=~(1<<PORTA3);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PA4µÄÉèÖÃ
+	//PA4çš„è®¾ç½®
 	
 	else if(pin==PORTA_Pin_4)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PA4ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PA4è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRA&=~(1<<PORTA4);				//PA4ÊäÈë
-			PORTA|=(1<<PORTA4);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRA&=~(1<<PORTA4);				//PA4è¾“å…¥
+			PORTA|=(1<<PORTA4);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PA4ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PA4è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRA&=~(1<<PORTA4);				//PA4ÊäÈë
-			PORTA&=~(1<<PORTA4);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRA&=~(1<<PORTA4);				//PA4è¾“å…¥
+			PORTA&=~(1<<PORTA4);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PA4Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PA4è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRA|=(1<<PORTA4);				//PA4Êä³ö
-			PORTA|=(1<<PORTA4);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRA|=(1<<PORTA4);				//PA4è¾“å‡º
+			PORTA|=(1<<PORTA4);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRA|=(1<<PORTA4);				//PA4Êä³ö
-			PORTA&=~(1<<PORTA4);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRA|=(1<<PORTA4);				//PA4è¾“å‡º
+			PORTA&=~(1<<PORTA4);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PA5µÄÉèÖÃ
+	//PA5çš„è®¾ç½®
 	
 	else if(pin==PORTA_Pin_5)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PA5ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PA5è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRA&=~(1<<PORTA5);				//PA5ÊäÈë
-			PORTA|=(1<<PORTA5);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRA&=~(1<<PORTA5);				//PA5è¾“å…¥
+			PORTA|=(1<<PORTA5);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PA5ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PA5è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRA&=~(1<<PORTA5);				//PA5ÊäÈë
-			PORTA&=~(1<<PORTA5);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRA&=~(1<<PORTA5);				//PA5è¾“å…¥
+			PORTA&=~(1<<PORTA5);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PA5Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PA5è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRA|=(1<<PORTA5);				//PA5Êä³ö
-			PORTA|=(1<<PORTA5);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRA|=(1<<PORTA5);				//PA5è¾“å‡º
+			PORTA|=(1<<PORTA5);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRA|=(1<<PORTA5);				//PA5Êä³ö
-			PORTA&=~(1<<PORTA5);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRA|=(1<<PORTA5);				//PA5è¾“å‡º
+			PORTA&=~(1<<PORTA5);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PA6µÄÉèÖÃ
+	//PA6çš„è®¾ç½®
 	
 	else if(pin==PORTA_Pin_6)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PA6ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PA6è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRA&=~(1<<PORTA6);				//PA6ÊäÈë
-			PORTA|=(1<<PORTA6);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRA&=~(1<<PORTA6);				//PA6è¾“å…¥
+			PORTA|=(1<<PORTA6);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PA6ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PA6è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRA&=~(1<<PORTA6);				//PA6ÊäÈë
-			PORTA&=~(1<<PORTA6);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRA&=~(1<<PORTA6);				//PA6è¾“å…¥
+			PORTA&=~(1<<PORTA6);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PA6Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PA6è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRA|=(1<<PORTA6);				//PA6Êä³ö
-			PORTA|=(1<<PORTA6);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRA|=(1<<PORTA6);				//PA6è¾“å‡º
+			PORTA|=(1<<PORTA6);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRA|=(1<<PORTA6);				//PA6Êä³ö
-			PORTA&=~(1<<PORTA6);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRA|=(1<<PORTA6);				//PA6è¾“å‡º
+			PORTA&=~(1<<PORTA6);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PA7µÄÉèÖÃ
+	//PA7çš„è®¾ç½®
 	
 	else if(pin==PORTA_Pin_7)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PA7ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PA7è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRA&=~(1<<PORTA7);				//PA7ÊäÈë
-			PORTA|=(1<<PORTA7);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRA&=~(1<<PORTA7);				//PA7è¾“å…¥
+			PORTA|=(1<<PORTA7);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PA7ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PA7è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRA&=~(1<<PORTA7);				//PA7ÊäÈë
-			PORTA&=~(1<<PORTA7);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRA&=~(1<<PORTA7);				//PA7è¾“å…¥
+			PORTA&=~(1<<PORTA7);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PA7Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PA7è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRA|=(1<<PORTA7);				//PA7Êä³ö
-			PORTA|=(1<<PORTA7);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRA|=(1<<PORTA7);				//PA7è¾“å‡º
+			PORTA|=(1<<PORTA7);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRA|=(1<<PORTA7);				//PA7Êä³ö
-			PORTA&=~(1<<PORTA7);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRA|=(1<<PORTA7);				//PA7è¾“å‡º
+			PORTA&=~(1<<PORTA7);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PB0µÄÉèÖÃ
+	//PB0çš„è®¾ç½®
 	
 	else if(pin==PORTB_Pin_0)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PB0ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PB0è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRB&=~(1<<PORTB0);				//PB0ÊäÈë
-			PORTB|=(1<<PORTB0);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRB&=~(1<<PORTB0);				//PB0è¾“å…¥
+			PORTB|=(1<<PORTB0);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PB0ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PB0è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRB&=~(1<<PORTB0);				//PB0ÊäÈë
-			PORTB&=~(1<<PORTB0);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRB&=~(1<<PORTB0);				//PB0è¾“å…¥
+			PORTB&=~(1<<PORTB0);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PB0Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PB0è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRB|=(1<<PORTB0);				//PB0Êä³ö
-			PORTB|=(1<<PORTB0);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRB|=(1<<PORTB0);				//PB0è¾“å‡º
+			PORTB|=(1<<PORTB0);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRB|=(1<<PORTB0);				//PB0Êä³ö
-			PORTB&=~(1<<PORTB0);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRB|=(1<<PORTB0);				//PB0è¾“å‡º
+			PORTB&=~(1<<PORTB0);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PB1µÄÉèÖÃ
+	//PB1çš„è®¾ç½®
 	
 	else if(pin==PORTB_Pin_1)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PB1ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PB1è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRB&=~(1<<PORTB1);				//PB1ÊäÈë
-			PORTB|=(1<<PORTB1);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRB&=~(1<<PORTB1);				//PB1è¾“å…¥
+			PORTB|=(1<<PORTB1);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PB1ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PB1è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRB&=~(1<<PORTB1);				//PB1ÊäÈë
-			PORTB&=~(1<<PORTB1);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRB&=~(1<<PORTB1);				//PB1è¾“å…¥
+			PORTB&=~(1<<PORTB1);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PB1Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PB1è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRB|=(1<<PORTB1);				//PB1Êä³ö
-			PORTB|=(1<<PORTB1);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRB|=(1<<PORTB1);				//PB1è¾“å‡º
+			PORTB|=(1<<PORTB1);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRB|=(1<<PORTB1);				//PB1Êä³ö
-			PORTB&=~(1<<PORTB1);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRB|=(1<<PORTB1);				//PB1è¾“å‡º
+			PORTB&=~(1<<PORTB1);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PB2µÄÉèÖÃ
+	//PB2çš„è®¾ç½®
 	
 	else if(pin==PORTB_Pin_2)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PB2ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PB2è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRB&=~(1<<PORTB2);				//PA0ÊäÈë
-			PORTB|=(1<<PORTB2);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRB&=~(1<<PORTB2);				//PA0è¾“å…¥
+			PORTB|=(1<<PORTB2);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PB2ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PB2è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRB&=~(1<<PORTB2);				//PB2ÊäÈë
-			PORTB&=~(1<<PORTB2);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRB&=~(1<<PORTB2);				//PB2è¾“å…¥
+			PORTB&=~(1<<PORTB2);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PB2Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PB2è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRB|=(1<<PORTB2);				//PB2Êä³ö
-			PORTB|=(1<<PORTB2);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRB|=(1<<PORTB2);				//PB2è¾“å‡º
+			PORTB|=(1<<PORTB2);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRB|=(1<<PORTB2);				//PB2Êä³ö
-			PORTB&=~(1<<PORTB2);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRB|=(1<<PORTB2);				//PB2è¾“å‡º
+			PORTB&=~(1<<PORTB2);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PB3µÄÉèÖÃ
+	//PB3çš„è®¾ç½®
 	
 	else if(pin==PORTB_Pin_3)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PB3ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PB3è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRB&=~(1<<PORTB3);				//PB3ÊäÈë
-			PORTB|=(1<<PORTB3);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRB&=~(1<<PORTB3);				//PB3è¾“å…¥
+			PORTB|=(1<<PORTB3);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PB3ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PB3è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRB&=~(1<<PORTB3);				//PB3ÊäÈë
-			PORTB&=~(1<<PORTB3);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRB&=~(1<<PORTB3);				//PB3è¾“å…¥
+			PORTB&=~(1<<PORTB3);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PB3Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PB3è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRB|=(1<<PORTB3);				//PB3Êä³ö
-			PORTB|=(1<<PORTB3);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRB|=(1<<PORTB3);				//PB3è¾“å‡º
+			PORTB|=(1<<PORTB3);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRB|=(1<<PORTB3);				//PB3Êä³ö
-			PORTB&=~(1<<PORTB3);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRB|=(1<<PORTB3);				//PB3è¾“å‡º
+			PORTB&=~(1<<PORTB3);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PB4µÄÉèÖÃ
+	//PB4çš„è®¾ç½®
 	
 	else if(pin==PORTB_Pin_4)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PA0ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PA0è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRB&=~(1<<PORTB4);				//PA0ÊäÈë
-			PORTB|=(1<<PORTB4);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRB&=~(1<<PORTB4);				//PA0è¾“å…¥
+			PORTB|=(1<<PORTB4);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PA0ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PA0è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRB&=~(1<<PORTB4);				//PA0ÊäÈë
-			PORTB&=~(1<<PORTB4);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRB&=~(1<<PORTB4);				//PA0è¾“å…¥
+			PORTB&=~(1<<PORTB4);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PA0Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PA0è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRB|=(1<<PORTB4);				//PA0Êä³ö
-			PORTB|=(1<<PORTB4);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRB|=(1<<PORTB4);				//PA0è¾“å‡º
+			PORTB|=(1<<PORTB4);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRB|=(1<<PORTB4);				//PA0Êä³ö
-			PORTB&=~(1<<PORTB4);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRB|=(1<<PORTB4);				//PA0è¾“å‡º
+			PORTB&=~(1<<PORTB4);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PB5µÄÉèÖÃ
+	//PB5çš„è®¾ç½®
 	
 	else if(pin==PORTB_Pin_5)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PB5ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PB5è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRB&=~(1<<PORTB5);				//PA0ÊäÈë
-			PORTB|=(1<<PORTB5);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRB&=~(1<<PORTB5);				//PA0è¾“å…¥
+			PORTB|=(1<<PORTB5);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PB5ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PB5è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRB&=~(1<<PORTB5);				//PB5ÊäÈë
-			PORTB&=~(1<<PORTB5);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRB&=~(1<<PORTB5);				//PB5è¾“å…¥
+			PORTB&=~(1<<PORTB5);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PB5Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PB5è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRB|=(1<<PORTB5);				//PB5Êä³ö
-			PORTB|=(1<<PORTB5);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRB|=(1<<PORTB5);				//PB5è¾“å‡º
+			PORTB|=(1<<PORTB5);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRB|=(1<<PORTB5);				//PB5Êä³ö
-			PORTB&=~(1<<PORTB5);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRB|=(1<<PORTB5);				//PB5è¾“å‡º
+			PORTB&=~(1<<PORTB5);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PB6µÄÉèÖÃ
+	//PB6çš„è®¾ç½®
 	
 	else if(pin==PORTB_Pin_6)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PB6ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PB6è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRB&=~(1<<PORTB6);				//PB6ÊäÈë
-			PORTB|=(1<<PORTB6);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRB&=~(1<<PORTB6);				//PB6è¾“å…¥
+			PORTB|=(1<<PORTB6);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PB6ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PB6è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRB&=~(1<<PORTB6);				//PB6ÊäÈë
-			PORTB&=~(1<<PORTB6);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRB&=~(1<<PORTB6);				//PB6è¾“å…¥
+			PORTB&=~(1<<PORTB6);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PB6Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PB6è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRB|=(1<<PORTB6);				//PB6Êä³ö
-			PORTB|=(1<<PORTB6);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRB|=(1<<PORTB6);				//PB6è¾“å‡º
+			PORTB|=(1<<PORTB6);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRB|=(1<<PORTB6);				//PB6Êä³ö
-			PORTB&=~(1<<PORTB6);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRB|=(1<<PORTB6);				//PB6è¾“å‡º
+			PORTB&=~(1<<PORTB6);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PB7µÄÉèÖÃ
+	//PB7çš„è®¾ç½®
 	
 	else if(pin==PORTB_Pin_7)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PB7ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PB7è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRB&=~(1<<PORTB7);				//PB7ÊäÈë
-			PORTB|=(1<<PORTB7);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRB&=~(1<<PORTB7);				//PB7è¾“å…¥
+			PORTB|=(1<<PORTB7);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PB7ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PB7è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRB&=~(1<<PORTB7);				//PB7ÊäÈë
-			PORTB&=~(1<<PORTB7);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRB&=~(1<<PORTB7);				//PB7è¾“å…¥
+			PORTB&=~(1<<PORTB7);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PB7Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PB7è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRB|=(1<<PORTB7);				//PB7Êä³ö
-			PORTB|=(1<<PORTB7);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRB|=(1<<PORTB7);				//PB7è¾“å‡º
+			PORTB|=(1<<PORTB7);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRB|=(1<<PORTB7);				//PB7Êä³ö
-			PORTB&=~(1<<PORTB7);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRB|=(1<<PORTB7);				//PB7è¾“å‡º
+			PORTB&=~(1<<PORTB7);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PC0µÄÉèÖÃ
+	//PC0çš„è®¾ç½®
 	
 	else if(pin==PORTC_Pin_0)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PC0ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PC0è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRC&=~(1<<PORTC0);				//PC0ÊäÈë
-			PORTC|=(1<<PORTC0);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRC&=~(1<<PORTC0);				//PC0è¾“å…¥
+			PORTC|=(1<<PORTC0);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PC0ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PC0è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRC&=~(1<<PORTC0);				//PC0ÊäÈë
-			PORTC&=~(1<<PORTC0);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRC&=~(1<<PORTC0);				//PC0è¾“å…¥
+			PORTC&=~(1<<PORTC0);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PC0Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PC0è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRC|=(1<<PORTC0);				//PC0Êä³ö
-			PORTC|=(1<<PORTC0);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRC|=(1<<PORTC0);				//PC0è¾“å‡º
+			PORTC|=(1<<PORTC0);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRC|=(1<<PORTC0);				//PC0Êä³ö
-			PORTC&=~(1<<PORTC0);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRC|=(1<<PORTC0);				//PC0è¾“å‡º
+			PORTC&=~(1<<PORTC0);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PC1µÄÉèÖÃ
+	//PC1çš„è®¾ç½®
 	
 	else if(pin==PORTC_Pin_1)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PC1ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PC1è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRC&=~(1<<PORTC1);				//PC1ÊäÈë
-			PORTC|=(1<<PORTC1);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRC&=~(1<<PORTC1);				//PC1è¾“å…¥
+			PORTC|=(1<<PORTC1);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PC1ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PC1è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRC&=~(1<<PORTC1);				//PC1ÊäÈë
-			PORTC&=~(1<<PORTC1);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRC&=~(1<<PORTC1);				//PC1è¾“å…¥
+			PORTC&=~(1<<PORTC1);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PC1Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PC1è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRC|=(1<<PORTC1);				//PC1Êä³ö
-			PORTC|=(1<<PORTC1);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRC|=(1<<PORTC1);				//PC1è¾“å‡º
+			PORTC|=(1<<PORTC1);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRC|=(1<<PORTC1);				//PC1Êä³ö
-			PORTC&=~(1<<PORTC1);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRC|=(1<<PORTC1);				//PC1è¾“å‡º
+			PORTC&=~(1<<PORTC1);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PC2µÄÉèÖÃ
+	//PC2çš„è®¾ç½®
 	
 	else if(pin==PORTC_Pin_2)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PC2ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PC2è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRC&=~(1<<PORTC2);				//PC2ÊäÈë
-			PORTC|=(1<<PORTC2);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRC&=~(1<<PORTC2);				//PC2è¾“å…¥
+			PORTC|=(1<<PORTC2);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PC2ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PC2è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRC&=~(1<<PORTC2);				//PC2ÊäÈë
-			PORTC&=~(1<<PORTC2);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRC&=~(1<<PORTC2);				//PC2è¾“å…¥
+			PORTC&=~(1<<PORTC2);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PC2Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PC2è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRC|=(1<<PORTC2);				//PC2Êä³ö
-			PORTC|=(1<<PORTC2);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRC|=(1<<PORTC2);				//PC2è¾“å‡º
+			PORTC|=(1<<PORTC2);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRC|=(1<<PORTC2);				//PC2Êä³ö
-			PORTC&=~(1<<PORTC2);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRC|=(1<<PORTC2);				//PC2è¾“å‡º
+			PORTC&=~(1<<PORTC2);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PC3µÄÉèÖÃ
+	//PC3çš„è®¾ç½®
 	
 	else if(pin==PORTC_Pin_3)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PC3ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PC3è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRC&=~(1<<PORTC3);				//PC3ÊäÈë
-			PORTC|=(1<<PORTC3);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRC&=~(1<<PORTC3);				//PC3è¾“å…¥
+			PORTC|=(1<<PORTC3);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PC3ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PC3è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRC&=~(1<<PORTC3);				//PC3ÊäÈë
-			PORTC&=~(1<<PORTC3);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRC&=~(1<<PORTC3);				//PC3è¾“å…¥
+			PORTC&=~(1<<PORTC3);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PC3Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PC3è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRC|=(1<<PORTC3);				//PC3Êä³ö
-			PORTC|=(1<<PORTC3);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRC|=(1<<PORTC3);				//PC3è¾“å‡º
+			PORTC|=(1<<PORTC3);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRC|=(1<<PORTC3);				//PC3Êä³ö
-			PORTC&=~(1<<PORTC3);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRC|=(1<<PORTC3);				//PC3è¾“å‡º
+			PORTC&=~(1<<PORTC3);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PC4µÄÉèÖÃ
+	//PC4çš„è®¾ç½®
 	
 	else if(pin==PORTC_Pin_4)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PC4ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PC4è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRC&=~(1<<PORTC4);				//PC4ÊäÈë
-			PORTC|=(1<<PORTC4);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRC&=~(1<<PORTC4);				//PC4è¾“å…¥
+			PORTC|=(1<<PORTC4);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PC4ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PC4è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRC&=~(1<<PORTC4);				//PC4ÊäÈë
-			PORTC&=~(1<<PORTC4);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRC&=~(1<<PORTC4);				//PC4è¾“å…¥
+			PORTC&=~(1<<PORTC4);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PC4Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PC4è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRC|=(1<<PORTC4);				//PC4Êä³ö
-			PORTC|=(1<<PORTC4);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRC|=(1<<PORTC4);				//PC4è¾“å‡º
+			PORTC|=(1<<PORTC4);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRC|=(1<<PORTC4);				//PC4Êä³ö
-			PORTC&=~(1<<PORTC4);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRC|=(1<<PORTC4);				//PC4è¾“å‡º
+			PORTC&=~(1<<PORTC4);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PC5µÄÉèÖÃ
+	//PC5çš„è®¾ç½®
 	
 	else if(pin==PORTC_Pin_5)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PC5ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PC5è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRC&=~(1<<PORTC5);				//PC5ÊäÈë
-			PORTC|=(1<<PORTC5);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRC&=~(1<<PORTC5);				//PC5è¾“å…¥
+			PORTC|=(1<<PORTC5);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PC5ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PC5è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRC&=~(1<<PORTC5);				//PC5ÊäÈë
-			PORTC&=~(1<<PORTC5);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRC&=~(1<<PORTC5);				//PC5è¾“å…¥
+			PORTC&=~(1<<PORTC5);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PC5Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PC5è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRC|=(1<<PORTC5);				//PC5Êä³ö
-			PORTC|=(1<<PORTC5);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRC|=(1<<PORTC5);				//PC5è¾“å‡º
+			PORTC|=(1<<PORTC5);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRC|=(1<<PORTC5);				//PC5Êä³ö
-			PORTC&=~(1<<PORTC5);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRC|=(1<<PORTC5);				//PC5è¾“å‡º
+			PORTC&=~(1<<PORTC5);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PC6µÄÉèÖÃ
+	//PC6çš„è®¾ç½®
 	
 	else if(pin==PORTC_Pin_6)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PC6ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PC6è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRC&=~(1<<PORTC6);				//PA0ÊäÈë
-			PORTC|=(1<<PORTC6);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRC&=~(1<<PORTC6);				//PA0è¾“å…¥
+			PORTC|=(1<<PORTC6);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PC6ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PC6è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRC&=~(1<<PORTC6);				//PA0ÊäÈë
-			PORTC&=~(1<<PORTC6);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRC&=~(1<<PORTC6);				//PA0è¾“å…¥
+			PORTC&=~(1<<PORTC6);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PC6Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PC6è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRC|=(1<<PORTC6);				//PC6Êä³ö
-			PORTC|=(1<<PORTC6);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRC|=(1<<PORTC6);				//PC6è¾“å‡º
+			PORTC|=(1<<PORTC6);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRC|=(1<<PORTC6);				//PC6Êä³ö
-			PORTC&=~(1<<PORTC6);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRC|=(1<<PORTC6);				//PC6è¾“å‡º
+			PORTC&=~(1<<PORTC6);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PC7µÄÉèÖÃ
+	//PC7çš„è®¾ç½®
 	
 	else if(pin==PORTC_Pin_7)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PC7ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PC7è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRC&=~(1<<PORTC7);				//PC7ÊäÈë
-			PORTC|=(1<<PORTC7);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRC&=~(1<<PORTC7);				//PC7è¾“å…¥
+			PORTC|=(1<<PORTC7);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PC7ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PC7è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRC&=~(1<<PORTC7);				//PC7ÊäÈë
-			PORTC&=~(1<<PORTC7);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRC&=~(1<<PORTC7);				//PC7è¾“å…¥
+			PORTC&=~(1<<PORTC7);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PC7Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PC7è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRC|=(1<<PORTC7);				//PC7Êä³ö
-			PORTC|=(1<<PORTC7);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRC|=(1<<PORTC7);				//PC7è¾“å‡º
+			PORTC|=(1<<PORTC7);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRC|=(1<<PORTC7);				//PC7Êä³ö
-			PORTC&=~(1<<PORTC7);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRC|=(1<<PORTC7);				//PC7è¾“å‡º
+			PORTC&=~(1<<PORTC7);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PD0µÄÉèÖÃ
+	//PD0çš„è®¾ç½®
 	
 	else if(pin==PORTD_Pin_0)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PD0ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PD0è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRD&=~(1<<PORTD0);				//PD0ÊäÈë
-			PORTD|=(1<<PORTD0);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRD&=~(1<<PORTD0);				//PD0è¾“å…¥
+			PORTD|=(1<<PORTD0);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PD0ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PD0è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRD&=~(1<<PORTD0);				//PD0ÊäÈë
-			PORTD&=~(1<<PORTD0);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRD&=~(1<<PORTD0);				//PD0è¾“å…¥
+			PORTD&=~(1<<PORTD0);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PD0Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PD0è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRD|=(1<<PORTD0);				//PD0Êä³ö
-			PORTD|=(1<<PORTD0);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRD|=(1<<PORTD0);				//PD0è¾“å‡º
+			PORTD|=(1<<PORTD0);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRD|=(1<<PORTD0);				//PD0Êä³ö
-			PORTD&=~(1<<PORTD0);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRD|=(1<<PORTD0);				//PD0è¾“å‡º
+			PORTD&=~(1<<PORTD0);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PD1µÄÉèÖÃ
+	//PD1çš„è®¾ç½®
 	
 	else if(pin==PORTD_Pin_1)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PD1ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PD1è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRD&=~(1<<PORTD1);				//PD1ÊäÈë
-			PORTD|=(1<<PORTD1);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRD&=~(1<<PORTD1);				//PD1è¾“å…¥
+			PORTD|=(1<<PORTD1);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PD1ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PD1è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRD&=~(1<<PORTD1);				//PD1ÊäÈë
-			PORTD&=~(1<<PORTD1);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRD&=~(1<<PORTD1);				//PD1è¾“å…¥
+			PORTD&=~(1<<PORTD1);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PD1Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PD1è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRD|=(1<<PORTD1);				//PD1Êä³ö
-			PORTD|=(1<<PORTD1);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRD|=(1<<PORTD1);				//PD1è¾“å‡º
+			PORTD|=(1<<PORTD1);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRD|=(1<<PORTD1);				//PD1Êä³ö
-			PORTD&=~(1<<PORTD1);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRD|=(1<<PORTD1);				//PD1è¾“å‡º
+			PORTD&=~(1<<PORTD1);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PD2µÄÉèÖÃ
+	//PD2çš„è®¾ç½®
 	
 	else if(pin==PORTD_Pin_2)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PD2ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PD2è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRD&=~(1<<PORTD2);				//PD2ÊäÈë
-			PORTD|=(1<<PORTD2);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRD&=~(1<<PORTD2);				//PD2è¾“å…¥
+			PORTD|=(1<<PORTD2);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PD2ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PD2è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRD&=~(1<<PORTD2);				//PD2ÊäÈë
-			PORTD&=~(1<<PORTD2);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRD&=~(1<<PORTD2);				//PD2è¾“å…¥
+			PORTD&=~(1<<PORTD2);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PD2Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PD2è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRD|=(1<<PORTD2);				//PD2Êä³ö
-			PORTD|=(1<<PORTD2);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRD|=(1<<PORTD2);				//PD2è¾“å‡º
+			PORTD|=(1<<PORTD2);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRD|=(1<<PORTD2);				//PD2Êä³ö
-			PORTD&=~(1<<PORTD2);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRD|=(1<<PORTD2);				//PD2è¾“å‡º
+			PORTD&=~(1<<PORTD2);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PD3µÄÉèÖÃ
+	//PD3çš„è®¾ç½®
 	
 	else if(pin==PORTD_Pin_3)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PD3ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PD3è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRD&=~(1<<PORTD3);				//PD3ÊäÈë
-			PORTD|=(1<<PORTD3);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRD&=~(1<<PORTD3);				//PD3è¾“å…¥
+			PORTD|=(1<<PORTD3);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PD3ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PD3è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRD&=~(1<<PORTD3);				//PD3ÊäÈë
-			PORTD&=~(1<<PORTD3);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRD&=~(1<<PORTD3);				//PD3è¾“å…¥
+			PORTD&=~(1<<PORTD3);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PD3Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PD3è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRD|=(1<<PORTD3);				//PD3Êä³ö
-			PORTD|=(1<<PORTD3);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRD|=(1<<PORTD3);				//PD3è¾“å‡º
+			PORTD|=(1<<PORTD3);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRD|=(1<<PORTD3);				//PD3Êä³ö
-			PORTD&=~(1<<PORTD3);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRD|=(1<<PORTD3);				//PD3è¾“å‡º
+			PORTD&=~(1<<PORTD3);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PD4µÄÉèÖÃ
+	//PD4çš„è®¾ç½®
 	
 	else if(pin==PORTD_Pin_4)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PD4ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PD4è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRD&=~(1<<PORTD4);				//PD4ÊäÈë
-			PORTD|=(1<<PORTD4);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRD&=~(1<<PORTD4);				//PD4è¾“å…¥
+			PORTD|=(1<<PORTD4);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PD4ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PD4è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRD&=~(1<<PORTD4);				//PD4ÊäÈë
-			PORTD&=~(1<<PORTD4);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRD&=~(1<<PORTD4);				//PD4è¾“å…¥
+			PORTD&=~(1<<PORTD4);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PD4Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PD4è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRD|=(1<<PORTD4);				//PD4Êä³ö
-			PORTD|=(1<<PORTD4);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRD|=(1<<PORTD4);				//PD4è¾“å‡º
+			PORTD|=(1<<PORTD4);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRD|=(1<<PORTD4);				//PD4Êä³ö
-			PORTD&=~(1<<PORTD4);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRD|=(1<<PORTD4);				//PD4è¾“å‡º
+			PORTD&=~(1<<PORTD4);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PD5µÄÉèÖÃ
+	//PD5çš„è®¾ç½®
 	
 	else if(pin==PORTD_Pin_5)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PD5ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PD5è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRD&=~(1<<PORTD5);				//PD5ÊäÈë
-			PORTD|=(1<<PORTD5);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRD&=~(1<<PORTD5);				//PD5è¾“å…¥
+			PORTD|=(1<<PORTD5);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PD5ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PD5è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRD&=~(1<<PORTD5);				//PD5ÊäÈë
-			PORTD&=~(1<<PORTD5);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRD&=~(1<<PORTD5);				//PD5è¾“å…¥
+			PORTD&=~(1<<PORTD5);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PD5Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PD5è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRD|=(1<<PORTD5);				//PD5Êä³ö
-			PORTD|=(1<<PORTD5);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRD|=(1<<PORTD5);				//PD5è¾“å‡º
+			PORTD|=(1<<PORTD5);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRD|=(1<<PORTD5);				//PD5Êä³ö
-			PORTD&=~(1<<PORTD5);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRD|=(1<<PORTD5);				//PD5è¾“å‡º
+			PORTD&=~(1<<PORTD5);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PD6µÄÉèÖÃ
+	//PD6çš„è®¾ç½®
 	
 	else if(pin==PORTD_Pin_6)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PD6ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PD6è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRD&=~(1<<PORTD6);				//PD6ÊäÈë
-			PORTD|=(1<<PORTD6);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRD&=~(1<<PORTD6);				//PD6è¾“å…¥
+			PORTD|=(1<<PORTD6);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PD6ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PD6è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRD&=~(1<<PORTD6);				//PD6ÊäÈë
-			PORTD&=~(1<<PORTD6);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRD&=~(1<<PORTD6);				//PD6è¾“å…¥
+			PORTD&=~(1<<PORTD6);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PD6Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PD6è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRD|=(1<<PORTD6);				//PD6Êä³ö
-			PORTD|=(1<<PORTD6);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRD|=(1<<PORTD6);				//PD6è¾“å‡º
+			PORTD|=(1<<PORTD6);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRD|=(1<<PORTD6);				//PD6Êä³ö
-			PORTD&=~(1<<PORTD6);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRD|=(1<<PORTD6);				//PD6è¾“å‡º
+			PORTD&=~(1<<PORTD6);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 	
-	//PD7µÄÉèÖÃ
+	//PD7çš„è®¾ç½®
 	
 	else if(pin==PORTD_Pin_7)
 	{
-		if ((pincmd==Input) && (pinres==High))		//PD7ÊäÈë,Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		if ((pincmd==Input) && (pinres==High))		//PD7è¾“å…¥,å¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRD&=~(1<<PORTD7);				//PD7ÊäÈë
-			PORTD|=(1<<PORTD7);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRD&=~(1<<PORTD7);				//PD7è¾“å…¥
+			PORTD|=(1<<PORTD7);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
-		else if ((pincmd==Input) && (pinres==Low))	//PD7ÊäÈë£¬Òý½ÅÄ¬ÈÏµÍµçÆ½
+		else if ((pincmd==Input) && (pinres==Low))	//PD7è¾“å…¥ï¼Œå¼•è„šé»˜è®¤ä½Žç”µå¹³
 		{
-			DDRD&=~(1<<PORTD7);				//PD7ÊäÈë
-			PORTD&=~(1<<PORTD7);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRD&=~(1<<PORTD7);				//PD7è¾“å…¥
+			PORTD&=~(1<<PORTD7);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 		
-		else if ((pincmd==Output) && (pinres==High))	//PD7Êä³ö£¬Òý½ÅÄ¬ÈÏ¸ßµçÆ½
+		else if ((pincmd==Output) && (pinres==High))	//PD7è¾“å‡ºï¼Œå¼•è„šé»˜è®¤é«˜ç”µå¹³
 		{
-			DDRD|=(1<<PORTD7);				//PD7Êä³ö
-			PORTD|=(1<<PORTD7);				//ÉÏÀ­µç×èÊ¹ÄÜ
+			DDRD|=(1<<PORTD7);				//PD7è¾“å‡º
+			PORTD|=(1<<PORTD7);				//ä¸Šæ‹‰ç”µé˜»ä½¿èƒ½
 		}
 		
 		else if((pincmd==Output) && (pinres==Low))
 		{
-			DDRD|=(1<<PORTD7);				//PD7Êä³ö
-			PORTD&=~(1<<PORTD7);			//ÉÏÀ­µç×è½ûÖ¹
+			DDRD|=(1<<PORTD7);				//PD7è¾“å‡º
+			PORTD&=~(1<<PORTD7);			//ä¸Šæ‹‰ç”µé˜»ç¦æ­¢
 		}
 	}
 }
@@ -975,8 +975,8 @@ void IO_PinMode(Pin_Type pin , PinCmd_Type pincmd , PinRes_Type pinres)
 /************************************************************************/
 /*void	IO_ReadPin();													*/
 /*																		*/
-/*´Ëº¯ÊýÓÃÀ´¶ÁÈ¡Òý½ÅµçÆ½£¬ÓÐÒ»¸ö¸ö²ÎÊý									    */
-/*Ò».pin£ºÓÃÀ´Ñ¡ÔñÒý½Å													*/
+/*æ­¤å‡½æ•°ç”¨æ¥è¯»å–å¼•è„šç”µå¹³ï¼Œæœ‰ä¸€ä¸ªä¸ªå‚æ•°									    */
+/*ä¸€.pinï¼šç”¨æ¥é€‰æ‹©å¼•è„š													*/
 /*																		*/
 /************************************************************************/
 
@@ -984,7 +984,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 {
 	uint8_t status;
 	
-	//¶ÁÈ¡PA0×´Ì¬
+	//è¯»å–PA0çŠ¶æ€
 	
 	if (pin==PORTA_Pin_0)
 	{
@@ -997,7 +997,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PA1×´Ì¬
+	//è¯»å–PA1çŠ¶æ€
 	
 	else if (pin==PORTA_Pin_1)
 	{
@@ -1010,7 +1010,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PA2×´Ì¬
+	//è¯»å–PA2çŠ¶æ€
 	
 	else if (pin==PORTA_Pin_2)
 	{
@@ -1023,7 +1023,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PA3×´Ì¬
+	//è¯»å–PA3çŠ¶æ€
 	
 	else if (pin==PORTA_Pin_3)
 	{
@@ -1036,7 +1036,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PA4×´Ì¬
+	//è¯»å–PA4çŠ¶æ€
 	
 	else if (pin==PORTA_Pin_4)
 	{
@@ -1049,7 +1049,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PA5×´Ì¬
+	//è¯»å–PA5çŠ¶æ€
 	
 	else if (pin==PORTA_Pin_5)
 	{
@@ -1062,7 +1062,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PA6×´Ì¬
+	//è¯»å–PA6çŠ¶æ€
 	
 	else if (pin==PORTA_Pin_6)
 	{
@@ -1075,7 +1075,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PA7×´Ì¬
+	//è¯»å–PA7çŠ¶æ€
 	
 	else if (pin==PORTA_Pin_7)
 	{
@@ -1088,7 +1088,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PB0×´Ì¬
+	//è¯»å–PB0çŠ¶æ€
 	
 	else if (pin==PORTB_Pin_0)
 	{
@@ -1101,7 +1101,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PB1×´Ì¬
+	//è¯»å–PB1çŠ¶æ€
 	
 	else if (pin==PORTB_Pin_1)
 	{
@@ -1114,7 +1114,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PB2×´Ì¬
+	//è¯»å–PB2çŠ¶æ€
 	
 	else if (pin==PORTB_Pin_2)
 	{
@@ -1127,7 +1127,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PB3×´Ì¬
+	//è¯»å–PB3çŠ¶æ€
 	
 	else if (pin==PORTB_Pin_3)
 	{
@@ -1140,7 +1140,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PB4×´Ì¬
+	//è¯»å–PB4çŠ¶æ€
 	
 	else if (pin==PORTB_Pin_4)
 	{
@@ -1153,7 +1153,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PB5×´Ì¬
+	//è¯»å–PB5çŠ¶æ€
 	
 	else if (pin==PORTB_Pin_5)
 	{
@@ -1166,7 +1166,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PB6×´Ì¬
+	//è¯»å–PB6çŠ¶æ€
 	
 	else if (pin==PORTB_Pin_6)
 	{
@@ -1179,7 +1179,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PB7×´Ì¬
+	//è¯»å–PB7çŠ¶æ€
 	
 	else if (pin==PORTB_Pin_7)
 	{
@@ -1192,7 +1192,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PC0×´Ì¬
+	//è¯»å–PC0çŠ¶æ€
 	
 	else if (pin==PORTC_Pin_0)
 	{
@@ -1205,7 +1205,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PC1×´Ì¬
+	//è¯»å–PC1çŠ¶æ€
 	
 	else if (pin==PORTC_Pin_1)
 	{
@@ -1218,7 +1218,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PC2×´Ì¬
+	//è¯»å–PC2çŠ¶æ€
 	
 	else if (pin==PORTC_Pin_2)
 	{
@@ -1231,7 +1231,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PC3×´Ì¬
+	//è¯»å–PC3çŠ¶æ€
 	
 	else if (pin==PORTC_Pin_3)
 	{
@@ -1244,7 +1244,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PC4×´Ì¬
+	//è¯»å–PC4çŠ¶æ€
 	
 	else if (pin==PORTC_Pin_4)
 	{
@@ -1257,7 +1257,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PC5×´Ì¬
+	//è¯»å–PC5çŠ¶æ€
 	
 	else if (pin==PORTC_Pin_5)
 	{
@@ -1270,7 +1270,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PC6×´Ì¬
+	//è¯»å–PC6çŠ¶æ€
 	
 	else if (pin==PORTC_Pin_6)
 	{
@@ -1283,7 +1283,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PC7×´Ì¬
+	//è¯»å–PC7çŠ¶æ€
 	
 	else if (pin==PORTC_Pin_7)
 	{
@@ -1296,7 +1296,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PD0×´Ì¬
+	//è¯»å–PD0çŠ¶æ€
 	
 	else if (pin==PORTD_Pin_0)
 	{
@@ -1309,7 +1309,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PD1×´Ì¬
+	//è¯»å–PD1çŠ¶æ€
 	
 	else if (pin==PORTD_Pin_1)
 	{
@@ -1322,7 +1322,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PD2×´Ì¬
+	//è¯»å–PD2çŠ¶æ€
 	
 	else if (pin==PORTD_Pin_2)
 	{
@@ -1335,7 +1335,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PD3×´Ì¬
+	//è¯»å–PD3çŠ¶æ€
 	
 	else if (pin==PORTD_Pin_3)
 	{
@@ -1348,7 +1348,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PD4×´Ì¬
+	//è¯»å–PD4çŠ¶æ€
 	
 	else if (pin==PORTD_Pin_4)
 	{
@@ -1361,7 +1361,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PD5×´Ì¬
+	//è¯»å–PD5çŠ¶æ€
 	
 	else if (pin==PORTD_Pin_5)
 	{
@@ -1374,7 +1374,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PD6×´Ì¬
+	//è¯»å–PD6çŠ¶æ€
 	
 	else if (pin==PORTD_Pin_6)
 	{
@@ -1387,7 +1387,7 @@ uint8_t IO_ReadPin(Pin_Type pin)
 		return 0;
 	}
 	
-	//¶ÁÈ¡PD7×´Ì¬
+	//è¯»å–PD7çŠ¶æ€
 	
 	else if (pin==PORTD_Pin_7)
 	{
