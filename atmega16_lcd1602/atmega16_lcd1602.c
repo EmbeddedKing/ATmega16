@@ -1,6 +1,6 @@
 #include "atmega16_lcd1602.h"
 
-//³õÊ¼»¯º¯Êı
+//åˆå§‹åŒ–å‡½æ•°
 void LCD1602_Init()
 {
 	LCD_BUS_ADDR=0xff;
@@ -14,7 +14,7 @@ void LCD1602_Init()
 	LCD1602_Clear();
 }
 
-//ÇåÆÁ
+//æ¸…å±
 void LCD1602_Clear()
 {
 	LCD1602_WriteCmd(0x80);
@@ -29,7 +29,7 @@ void LCD1602_Clear()
 	}
 }
 
-//Ğ´Ö¸Áî
+//å†™æŒ‡ä»¤
 void LCD1602_WriteCmd(uint8_t Cmd)
 {
 	LCD_RS_L();
@@ -40,7 +40,7 @@ void LCD1602_WriteCmd(uint8_t Cmd)
 	LCD_E_L();                                                                       
 }
 
-//Ğ´Êı¾İ
+//å†™æ•°æ®
 void LCD1602_WriteData(uint8_t Data)
 {
 	LCD_RS_H();
@@ -73,3 +73,4 @@ void LCD1602_DisplayString(uint8_t x,uint8_t y,uint8_t *data)
 		temp=*(++data);
 	}
 }
+

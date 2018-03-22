@@ -1,12 +1,12 @@
 #include "atmega16_lcd12864.h"
     
-//¼ì²âÆÁÄ»Ã¦º¯Êı³õÊ¼»¯
+//æ£€æµ‹å±å¹•å¿™å‡½æ•°åˆå§‹åŒ–
 void LCD12864_Busy_Init()
 {
-	LCD_BUS_ADDR=0x00;			//ÉèÖÃÊäÈë
+	LCD_BUS_ADDR=0x00;			//è®¾ç½®è¾“å…¥
 }
 
-//ÆÁÄ»Ã¦¼ì²âº¯Êı
+//å±å¹•å¿™æ£€æµ‹å‡½æ•°
 uint8_t LCD12864_Busy()
 {
 	uint8_t x;
@@ -21,10 +21,10 @@ uint8_t LCD12864_Busy()
 	return x;
 }
 
-//ÏòÆÁÄ»Ğ´ÃüÁîº¯Êı
+//å‘å±å¹•å†™å‘½ä»¤å‡½æ•°
 void LCD12684_WriteCmd(uint8_t data)
 {
-	while(LCD12864_Busy());			//Ã¦¼ì²â 
+	while(LCD12864_Busy());			//å¿™æ£€æµ‹ 
 	LCD_RS_L();	     
 	LCD_RW_L();
 	LCD_E_L();
@@ -40,10 +40,10 @@ void LCD12684_WriteCmd(uint8_t data)
 	LCD_E_L();
 }
 
-//ÏòÆÁÄ»Ğ´Êı¾İº¯Êı
+//å‘å±å¹•å†™æ•°æ®å‡½æ•°
 void LCD12684_WriteData(uint8_t data)
 {
-	while(LCD12864_Busy()); //Ã¦¼ì²â
+	while(LCD12864_Busy()); //å¿™æ£€æµ‹
 	LCD_RS_H();     
 	LCD_RW_L();
 	LCD_E_L();
@@ -59,35 +59,35 @@ void LCD12684_WriteData(uint8_t data)
 	LCD_E_L();
 }
 
-// Òº¾§³õÊ¼»¯
+// æ¶²æ™¶åˆå§‹åŒ–
 void LCD12864_Init()
 {
 	                   
-	LCD12684_WriteCmd(0x34);    //À©³äÖ¸Áî²Ù×÷
+	LCD12684_WriteCmd(0x34);    //æ‰©å……æŒ‡ä»¤æ“ä½œ
     _delay_ms(5);
-    LCD12684_WriteCmd(0x30);    //»ù±¾Ö¸Áî²Ù×÷
+    LCD12684_WriteCmd(0x30);    //åŸºæœ¬æŒ‡ä»¤æ“ä½œ
     _delay_ms(5);
-    LCD12684_WriteCmd(0x0C);    //ÏÔÊ¾¿ª£¬¹Ø¹â±ê
+    LCD12684_WriteCmd(0x0C);    //æ˜¾ç¤ºå¼€ï¼Œå…³å…‰æ ‡
     _delay_ms(5);
-    LCD12684_WriteCmd(0x01);    //Çå³ıLCDµÄÏÔÊ¾ÄÚÈİ
+    LCD12684_WriteCmd(0x01);    //æ¸…é™¤LCDçš„æ˜¾ç¤ºå†…å®¹
     _delay_ms(5); 
 }
 
-//ÇåÆÁ
+//æ¸…å±
 void LCD12864_Clear()
 {
-    LCD12684_WriteCmd(0x34);   //À©³äÖ¸Áî²Ù×÷	¡°»æÍ¼¡±
+    LCD12684_WriteCmd(0x34);   //æ‰©å……æŒ‡ä»¤æ“ä½œ	â€œç»˜å›¾â€
     _delay_ms(5);
-    LCD12684_WriteCmd(0x30);    //»ù±¾Ö¸Áî²Ù×÷
+    LCD12684_WriteCmd(0x30);    //åŸºæœ¬æŒ‡ä»¤æ“ä½œ
     _delay_ms(5);
-    LCD12684_WriteCmd(0x01);   //ÇåÆÁ
+    LCD12684_WriteCmd(0x01);   //æ¸…å±
     _delay_ms(5);
 } 
 
 /************************************************************************************************/
 //@f_name: void LCD12864_Pos(u8 x,u8 y)
-//@brief:ÉèÖÃÏÔÊ¾Î»ÖÃ
-//@param:u8 x£ºXÖá    u8 y:YÖá
+//@brief:è®¾ç½®æ˜¾ç¤ºä½ç½®
+//@param:u8 xï¼šXè½´    u8 y:Yè½´
 //@return: None
 /************************************************************************************************/
 void LCD12864_Pos(uint8_t x,uint8_t y)
@@ -99,13 +99,13 @@ void LCD12864_Pos(uint8_t x,uint8_t y)
 	else if (x==4)	{x=0x98;}
 	else x=0x80;
 	Pos=x+y;
-	LCD12684_WriteCmd(Pos);				//ÏÔÊ¾µØÖ·
+	LCD12684_WriteCmd(Pos);				//æ˜¾ç¤ºåœ°å€
 }
 
 /************************************************************************************************/
 //@f_name: void LCD_DisplayString(u8 x,u8 y,const u8 *p)
-//@brief:	 ÏÔÊ¾×Ö·û´®
-//@param:	 u8 *bmp Í¼ĞÎÊı×é
+//@brief:	 æ˜¾ç¤ºå­—ç¬¦ä¸²
+//@param:	 u8 *bmp å›¾å½¢æ•°ç»„
 //@return: None
 /************************************************************************************************/
 void LCD12864_DisplayString(uint8_t x,uint8_t y,uint8_t *p)
@@ -121,4 +121,5 @@ void LCD12864_DisplayString(uint8_t x,uint8_t y,uint8_t *p)
 		temp=*(++p);
 	} 
 }
+
 

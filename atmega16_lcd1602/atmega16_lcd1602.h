@@ -14,7 +14,7 @@
 #include <util/delay.h>
 #include "atmega16_io.h"
 
-//¹Ü½Å¶¨ÒåÐÞ¸ÄÇø
+//ç®¡è„šå®šä¹‰ä¿®æ”¹åŒº
 /***********************************************************/
 #define LCD_RS_H()		DDRA|=(1<<DDA5);PORTA|=(1<<PORTA5);
 #define LCD_RS_L()		DDRA|=(1<<DDA5);PORTA&=~(1<<PORTA5);
@@ -26,12 +26,13 @@
 #define LCD_BUS_ADDR	DDRC
 /***********************************************************/
 
-void LCD1602_Init();														//³õÊ¼»¯º¯Êý
-void LCD1602_WriteCmd(uint8_t Cmd);											//Ð´Ö¸Áîº¯Êý
-void LCD1602_WriteData(uint8_t Data);										//Ð´Êý¾Ýº¯Êý
-void LCD1602_Pos(uint8_t x,uint8_t y);										//Ñ¡ÔñÎ»ÖÃº¯Êý
-void LCD1602_Clear();														//Çå³ýRAMº¯Êý
+void LCD1602_Init();														//åˆå§‹åŒ–å‡½æ•°
+void LCD1602_WriteCmd(uint8_t Cmd);											//å†™æŒ‡ä»¤å‡½æ•°
+void LCD1602_WriteData(uint8_t Data);										//å†™æ•°æ®å‡½æ•°
+void LCD1602_Pos(uint8_t x,uint8_t y);										//é€‰æ‹©ä½ç½®å‡½æ•°
+void LCD1602_Clear();														//æ¸…é™¤RAMå‡½æ•°
 void LCD1602_DisplayString(uint8_t x,uint8_t y,uint8_t *data);
 
 
 #endif /* ATMEGA16_LCD1602_H_ */
+

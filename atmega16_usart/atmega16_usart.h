@@ -4,9 +4,10 @@
 #include <avr/io.h>
 #include "atmega16_io.h"
 
-void USART_Init(uint32_t baud,uint32_t crystal);			//´®¿Ú³õÊ¼»¯
-void USART_SendByte(uint8_t data);							//·¢ËÍÒ»¸ö×Ö½ÚÊı¾İ
-uint8_t USART_ReceiveByte();								//½ÓÊÕÒ»¸ö×Ö½ÚÊı¾İ
-void USART_SendString(uint8_t *data);						//·¢ËÍÒ»¸ö×Ö·û´®
+void USART_Init(uint32_t baud,uint32_t crystal);			//ä¸²å£åˆå§‹åŒ–
+void USART_SendByte(uint8_t data);							//å‘é€ä¸€ä¸ªå­—èŠ‚æ•°æ®
+uint8_t USART_ReceiveByte();								//æ¥æ”¶ä¸€ä¸ªå­—èŠ‚æ•°æ®
+void USART_SendString(uint8_t *data);						//å‘é€ä¸€ä¸ªå­—ç¬¦ä¸²
 
 #endif
+

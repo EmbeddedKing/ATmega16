@@ -10,15 +10,15 @@
 #ifndef ATMEGA16_TC0_H_
 #define ATMEGA16_TC0_H_
 
-typedef enum WorkMode		//¹¤×÷Ä£Ê½Ã¶¾ÙÀàĞÍ
+typedef enum WorkMode		//å·¥ä½œæ¨¡å¼æšä¸¾ç±»å‹
 {
-	COMMON,					//ÆÕÍ¨Ä£Ê½
-	CTC,					//CTCÄ£Ê½
-	SPWM,					//¿ìËÙPWMÄ£Ê½
-	PCPWM					//ÏàÎ»ĞŞÕıPWMÄ£Ê½
+	COMMON,					//æ™®é€šæ¨¡å¼
+	CTC,					//CTCæ¨¡å¼
+	SPWM,					//å¿«é€ŸPWMæ¨¡å¼
+	PCPWM					//ç›¸ä½ä¿®æ­£PWMæ¨¡å¼
 }WorkMode_Type;
 
-typedef enum TimeSource		//Ê±ÖÓÔ´Ã¶¾ÙÀàĞÍ
+typedef enum TimeSource		//æ—¶é’Ÿæºæšä¸¾ç±»å‹
 {
 	None,
 	Clock_1,
@@ -37,3 +37,4 @@ void TC0_1mstrigger(uint32_t crystal);
 
 
 #endif /* ATMEGA16_TC0_H_ */
+

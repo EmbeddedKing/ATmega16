@@ -5,7 +5,7 @@
 #define F_CPU 8000000UL
 #include <util/delay.h>
  
-//¹Ü½Å¶¨ÒåÐÞ¸ÄÇø
+//ç®¡è„šå®šä¹‰ä¿®æ”¹åŒº
 /***********************************************************/
 #define  LCD_RS_H()		DDRA|=(1<<7);PORTA|=(1<<7);
 #define  LCD_RS_L()		DDRA|=(1<<7);PORTA&=~(1<<7);
@@ -17,13 +17,14 @@
 #define LCD_BUS_ADDR	DDRC
 /***********************************************************/
 
-void LCD12864_Busy_Init();										//¼ì²âÆÁÄ»Ã¦º¯Êý³õÊ¼»¯
-uint8_t LCD12864_Busy();										//ÆÁÄ»Ã¦¼ì²âº¯Êý
-void LCD12684_WriteCmd(uint8_t data);							//Ð´Ö¸Áî
-void LCD12684_WriteData(uint8_t data);							//Ð´Êý¾Ý
-void LCD12864_Init();											//Òº¾§³õÊ¼»¯
-void LCD12864_Clear();											//ÇåÆÁ
-void LCD12864_Pos(uint8_t x,uint8_t y);							//ÉèÖÃÏÔÊ¾Î»ÖÃ
-void LCD12864_DisplayString(uint8_t x,uint8_t y,uint8_t *p);	//ÏÔÊ¾×Ö·û´®
+void LCD12864_Busy_Init();										//æ£€æµ‹å±å¹•å¿™å‡½æ•°åˆå§‹åŒ–
+uint8_t LCD12864_Busy();										//å±å¹•å¿™æ£€æµ‹å‡½æ•°
+void LCD12684_WriteCmd(uint8_t data);							//å†™æŒ‡ä»¤
+void LCD12684_WriteData(uint8_t data);							//å†™æ•°æ®
+void LCD12864_Init();											//æ¶²æ™¶åˆå§‹åŒ–
+void LCD12864_Clear();											//æ¸…å±
+void LCD12864_Pos(uint8_t x,uint8_t y);							//è®¾ç½®æ˜¾ç¤ºä½ç½®
+void LCD12864_DisplayString(uint8_t x,uint8_t y,uint8_t *p);	//æ˜¾ç¤ºå­—ç¬¦ä¸²
 
 #endif
+
